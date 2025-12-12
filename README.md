@@ -30,15 +30,13 @@ Things you may want to cover:
 | Column             | Type       | Options     |
 | ------------------ | ---------- | ----------- |
 | nickname           | string     | null: false |
-| email_address      | string     | null: false, unique: true |
+| email              | string     | null: false, unique: true |
 | encrypted_password | string     | null: false |
 | last_name          | string     | null: false |
 | first_name         | string     | null: false |
 | last_name_kana     | string     | null: false |
 | first_name_kana    | string     | null: false |
 | birth_date         | date       | null: false |
-| created_at         | datetime   | null: false |
-| updated_at         | datetime   | null: false |
 
 
 ### Association
@@ -53,96 +51,47 @@ Things you may want to cover:
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
-| category_id        | references | null: false, foreign_key: true |
-| condition_id       | references | null: false, foreign_key: true |
-| shipping_fee_id    | references | null: false, foreign_key: true |
-| prefecture_id      | references | null: false, foreign_key: true |
-| shipping_day_id    | references | null: false, foreign_key: true |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_fee_id    | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
+
 
 ### Association
 
 - belongs_to :user
 - has_one :order
-- belongs_to :category
-- belongs_to :condition
-- belongs_to :shipping_fee
-- belongs_to :prefecture
-- belongs_to :shipping_day
-
-## categories テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
-
-### Association
-
-- has_many :items
-
-## conditions テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
-
-### Association
-
-- has_many :items
-
-## shipping_fees テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
-
-### Association
-
-- has_many :items
-
-## prefectures テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
-
-### Association
-
-- has_many :items
-
-## shipping_days テーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| created_at         | datetime   | null: false                    |
-| updated_at         | datetime   | null: false                    |
-
-### Association
-
-- has_many :items
 
 
 ## orders テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| user_id     | references | null: false, foreign_key: true |
-| item_id     | references | null: false, foreign_key: true |
-| created_at  | datetime   | null: false                    |
-| updated_at  | datetime   | null: false                    |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
+- has_one :address
+
+
+## addresses テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postcode      | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     | null: true                     |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :order
