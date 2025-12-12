@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type       | Options     |
-| ------------------ | ---------- | ----------- |
-| nickname           | string     | null: false |
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| nickname           | string     | null: false               |
 | email              | string     | null: false, unique: true |
-| encrypted_password | string     | null: false |
-| last_name          | string     | null: false |
-| first_name         | string     | null: false |
-| last_name_kana     | string     | null: false |
-| first_name_kana    | string     | null: false |
-| birth_date         | date       | null: false |
+| encrypted_password | string     | null: false               |
+| last_name          | string     | null: false               |
+| first_name         | string     | null: false               |
+| last_name_kana     | string     | null: false               |
+| first_name_kana    | string     | null: false               |
+| birth_date         | date       | null: false               |
 
 
 ### Association
@@ -46,17 +46,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| description        | text       | null: false                    |
-| price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| category_id        | integer    | null: false                    |
-| condition_id       | integer    | null: false                    |
-| shipping_fee_id    | integer    | null: false                    |
-| prefecture_id      | integer    | null: false                    |
-| shipping_day_id    | integer    | null: false                    |
+| Column             | Type       | Options                        | Remarks                   |
+| ------------------ | ---------- | ------------------------------ | ------------------------- |
+| name               | string     | null: false                    |                           |
+| description        | text       | null: false                    |                           |
+| price              | integer    | null: false                    |                           |
+| user               | references | null: false, foreign_key: true |                           |
+| category_id        | integer    | null: false                    | Reference ID (ActiveHash) |
+| condition_id       | integer    | null: false                    | Reference ID (ActiveHash) |
+| shipping_fee_id    | integer    | null: false                    | Reference ID (ActiveHash) |
+| prefecture_id      | integer    | null: false                    | Reference ID (ActiveHash) |
+| shipping_day_id    | integer    | null: false                    | Reference ID (ActiveHash) |
 
 
 ### Association
@@ -82,15 +82,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postcode      | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| city          | string     | null: false                    |
-| house_number  | string     | null: false                    |
-| building_name | string     | null: true                     |
-| phone_number  | string     | null: false                    |
-| order         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        | Remarks                   |
+| ------------- | ---------- | ------------------------------ | ------------------------- |
+| postcode      | string     | null: false                    |                           |
+| prefecture_id | integer    | null: false                    | Reference ID (ActiveHash) |
+| city          | string     | null: false                    |                           |
+| house_number  | string     | null: false                    |                           |
+| building_name | string     | null: true                     |                           |
+| phone_number  | string     | null: false                    |                           |
+| order         | references | null: false, foreign_key: true |                           |
 
 ### Association
 
