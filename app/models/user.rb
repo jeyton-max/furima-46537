@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+
   validates :nickname, presence: true
   validates :last_name, presence: true
   validates :first_name, presence: true
@@ -21,4 +23,5 @@ class User < ApplicationRecord
   VALID_KATAKANA_REGEX = /\A[ァ-ヶー]+\z/
   validates :last_name_kana, format: { with: VALID_KATAKANA_REGEX, message: '全角カタカナで入力してください' }
   validates :first_name_kana, format: { with: VALID_KATAKANA_REGEX, message: '全角カタカナで入力してください' }
+
 end
