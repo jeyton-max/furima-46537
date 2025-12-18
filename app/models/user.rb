@@ -23,5 +23,4 @@ class User < ApplicationRecord
   VALID_KATAKANA_REGEX = /\A[ァ-ヶー]+\z/
   validates :last_name_kana, format: { with: VALID_KATAKANA_REGEX, message: '全角カタカナで入力してください' }
   validates :first_name_kana, format: { with: VALID_KATAKANA_REGEX, message: '全角カタカナで入力してください' }
-
 end
