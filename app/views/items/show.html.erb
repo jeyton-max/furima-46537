@@ -32,7 +32,7 @@
 
     <% else %>
       <%# 売却済み時の表示（後日実装） %>
-      <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+      <%= link_to "購入画面に進む", item_orders_path(@item) ,class:"item-red-btn"%>
       <%# //売却済み時の表示（後日実装） %>
     <% end %>
   <% end %>
