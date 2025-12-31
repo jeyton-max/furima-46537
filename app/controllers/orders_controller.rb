@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 
