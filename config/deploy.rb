@@ -7,6 +7,9 @@ set :application, 'furima-46537'
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:jeyton-max/furima-46537.git'
 
+# 追加：使用するブランチを指定
+set :branch, 'main'
+
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
